@@ -77,7 +77,7 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }} # Если ваш ssh-ключ защищён фразой-паролем
         script: |
           # Выполняет pull образа с DockerHub
-          sudo docker pull xjt85/api_yamdb
+          sudo docker pull ${{ secrets.DOCKERHUB_LOGIN }}/api_yamdb
           #остановка всех контейнеров
           sudo docker stop $(sudo docker ps -a -q)
-          sudo docker run --rm -d -p 5000:5000 xjt85/api_yamdb
+          sudo docker run --rm -d -p 5000:5000 ${{ secrets.DOCKERHUB_LOGIN }}/api_yamdb
